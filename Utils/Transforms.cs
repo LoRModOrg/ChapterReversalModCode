@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ChapterReversalMod.Utils
@@ -12,6 +13,18 @@ namespace ChapterReversalMod.Utils
                 yield return parent;
                 parent = parent.parent;
             }
+        }
+
+        public static IEnumerable<Transform> GetChilds(this Transform transform, Predicate<Transform> filter = null)
+        {
+            foreach (Transform child in transform)
+                if (filter == null || filter(child))
+                    yield return child;
+        }
+
+        public static IEnumerable<Transform> GetChildsByName(this Transform transform, Predicate<string> nameFilter)
+        {
+            return transform.GetChilds(child => nameFilter(child.name));
         }
     }
 }
