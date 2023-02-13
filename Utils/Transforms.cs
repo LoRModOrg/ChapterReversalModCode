@@ -26,5 +26,16 @@ namespace ChapterReversalMod.Utils
         {
             return transform.GetChilds(child => nameFilter(child.name));
         }
+
+        public static Transform FindOrAdd(this Transform transform, string childName)
+        {
+            Transform child = transform.Find(childName);
+            if (!child)
+            {
+                child = new GameObject(childName).transform;
+                child.SetParent(transform);
+            }
+            return child;
+        }
     }
 }
