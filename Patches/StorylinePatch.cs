@@ -23,7 +23,7 @@ namespace ChapterReversalMod.Patches
         {
             public static void Prefix(UIStoryGradeFilter __instance, List<UIStoryGradeFilterSlot> ___gradeSlots)
             {
-                if (!__instance.transform.GetParents().All(transform => transform.name != "[Panel]Invitation_Panel(Clone)" && transform.name != "[Script]StoryProgress")
+                if (__instance.transform.GetParents().All(transform => transform.name != "[Panel]Invitation_Panel(Clone)" || transform.name != "[Script]StoryProgress")
                     || ___gradeSlots.Any(slot => slot.transform.name == TOGGLE_NAME))
                     return;
                 GameObject origin = ___gradeSlots[0].gameObject;
