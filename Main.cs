@@ -19,7 +19,6 @@ namespace ChapterReversalMod
         {
             Harmony = new Harmony(Id);
             Harmony.PatchAll(Assembly.GetExecutingAssembly());
-            Chapters.CreateChapter(new List<StageClassInfo>() { { new LorId("BufDebufTest", 2).AsStageClassInfo().SetRecipe(new List<LorId>() { new LorId(250006), new LorId(250022), new LorId(250019) }) } }, Icon, new Vector2(-250, 250));
         }
     }
 }
